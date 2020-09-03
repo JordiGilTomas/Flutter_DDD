@@ -5,7 +5,10 @@ import 'package:fluter_ddd/domain/auth/i_auth_facade.dart';
 import 'package:fluter_ddd/domain/auth/value_objects.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
+@Injectable(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
@@ -28,8 +31,9 @@ class FirebaseAuthFacade implements IAuthFacade {
     } on PlatformException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left(const AuthFailure.emailAlreadyInUse());
-      } else
+      } else {
         return left(const AuthFailure.serverError());
+      }
     }
   }
 
@@ -60,7 +64,7 @@ class FirebaseAuthFacade implements IAuthFacade {
     try {
       final googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        return left(AuthFailure.cancelledByUser());
+        return left(const AuthFailure.cancelledByUser());
       }
 
       final googleAuthentication = await googleUser.authentication;
