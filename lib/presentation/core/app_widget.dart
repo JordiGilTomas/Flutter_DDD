@@ -1,4 +1,4 @@
-import 'package:fluter_ddd/presentation/sign_in/sign_in_page.dart';
+import 'package:flutter_ddd/presentation/sign_in/sign_in_page.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget extends StatelessWidget {

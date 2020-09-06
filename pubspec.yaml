@@ -1,4 +1,4 @@
-name: fluter_ddd
+name: flutter_ddd
 description: A new Flutter project.
 
 publish_to: 'none'
@@ -14,13 +14,14 @@ dependencies:
   cupertino_icons: ^1.0.0
   dartz: ^0.9.1
   freezed_annotation: ^0.11.0+1
-  flutter_bloc: ^6.0.4
+  flutter_bloc: ^6.0.5
   firebase_core: ^0.5.0
   firebase_auth: ^0.18.0+1
   google_sign_in: ^4.5.3
   get_it: ^4.0.4
   injectable: ^1.0.4
   flushbar: ^1.10.4
+  uuid: ^2.2.2
 
 dev_dependencies:
   flutter_test:

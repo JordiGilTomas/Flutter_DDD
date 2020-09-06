@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:fluter_ddd/domain/auth/auth_failure.dart';
-import 'package:fluter_ddd/domain/auth/i_auth_facade.dart';
-import 'package:fluter_ddd/domain/auth/value_objects.dart';
+import 'package:flutter_ddd/domain/auth/auth_failure.dart';
+import 'package:flutter_ddd/domain/auth/i_auth_facade.dart';
+import 'package:flutter_ddd/domain/auth/value_objects.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
