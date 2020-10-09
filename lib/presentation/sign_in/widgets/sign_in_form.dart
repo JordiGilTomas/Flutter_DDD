@@ -26,7 +26,7 @@ class SignInForm extends StatelessWidget {
       );
     }, builder: (context, state) {
       return Form(
-        autovalidate: state.showErrorMessages,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         child: ListView(
           children: <Widget>[
             const Text(
