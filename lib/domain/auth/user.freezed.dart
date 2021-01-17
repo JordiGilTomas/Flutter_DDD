@@ -29,6 +29,7 @@ const $UserApp = _$UserAppTearOff();
 mixin _$UserApp {
   UniqueId get id;
 
+  @JsonKey(ignore: true)
   $UserAppCopyWith<UserApp> get copyWith;
 }
 
@@ -108,6 +109,7 @@ class _$_UserApp implements _UserApp {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
 
+  @JsonKey(ignore: true)
   @override
   _$UserAppCopyWith<_UserApp> get copyWith =>
       __$UserAppCopyWithImpl<_UserApp>(this, _$identity);
@@ -119,5 +121,6 @@ abstract class _UserApp implements UserApp {
   @override
   UniqueId get id;
   @override
+  @JsonKey(ignore: true)
   _$UserAppCopyWith<_UserApp> get copyWith;
 }
