@@ -26,6 +26,7 @@ dependencies:
   json_annotation: ^3.0.1
   kt_dart: ^0.8.0
   uuid: ^2.2.2
+  rxdart: ^0.24.1
 
 dev_dependencies:
   auto_route_generator: ^0.6.10
