@@ -1,12 +1,13 @@
 import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kt_dart/collection.dart';
+
 import 'package:flutter_ddd/domain/core/value_objects.dart';
 import 'package:flutter_ddd/domain/notes/note.dart';
 import 'package:flutter_ddd/domain/notes/todo_item.dart';
 import 'package:flutter_ddd/domain/notes/value_objects.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kt_dart/collection.dart';
 
 part 'note_dtos.freezed.dart';
 part 'note_dtos.g.dart';
@@ -20,7 +21,7 @@ abstract class NoteDto implements _$NoteDto {
     @required String body,
     @required int color,
     @required List<TodoItemDto> todos,
-    @required FieldValue serverTimeStamp,
+    @required @ServerTimestampConverter() FieldValue serverTimeStamp,
   }) = _NoteDto;
 
   factory NoteDto.fromDomain(Note note) {
@@ -52,6 +53,18 @@ abstract class NoteDto implements _$NoteDto {
   factory NoteDto.fromFirestore(DocumentSnapshot doc) {
     return NoteDto.fromJson(doc.data()).copyWith(id: doc.id);
   }
+}
+
+class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
+  const ServerTimestampConverter();
+
+  @override
+  FieldValue fromJson(Object json) {
+    return FieldValue.serverTimestamp();
+  }
+
+  @override
+  Object toJson(FieldValue fieldValue) => fieldValue;
 }
 
 @freezed

@@ -22,7 +22,7 @@ class _$NoteDtoTearOff {
       @required String body,
       @required int color,
       @required List<TodoItemDto> todos,
-      @required FieldValue serverTimeStamp}) {
+      @required @ServerTimestampConverter() FieldValue serverTimeStamp}) {
     return _NoteDto(
       id: id,
       body: body,
@@ -49,6 +49,7 @@ mixin _$NoteDto {
   String get body;
   int get color;
   List<TodoItemDto> get todos;
+  @ServerTimestampConverter()
   FieldValue get serverTimeStamp;
 
   Map<String, dynamic> toJson();
@@ -65,7 +66,7 @@ abstract class $NoteDtoCopyWith<$Res> {
       String body,
       int color,
       List<TodoItemDto> todos,
-      FieldValue serverTimeStamp});
+      @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
 /// @nodoc
@@ -106,7 +107,7 @@ abstract class _$NoteDtoCopyWith<$Res> implements $NoteDtoCopyWith<$Res> {
       String body,
       int color,
       List<TodoItemDto> todos,
-      FieldValue serverTimeStamp});
+      @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
 /// @nodoc
@@ -147,7 +148,7 @@ class _$_NoteDto extends _NoteDto {
       @required this.body,
       @required this.color,
       @required this.todos,
-      @required this.serverTimeStamp})
+      @required @ServerTimestampConverter() this.serverTimeStamp})
       : assert(body != null),
         assert(color != null),
         assert(todos != null),
@@ -167,6 +168,7 @@ class _$_NoteDto extends _NoteDto {
   @override
   final List<TodoItemDto> todos;
   @override
+  @ServerTimestampConverter()
   final FieldValue serverTimeStamp;
 
   @override
@@ -214,11 +216,12 @@ class _$_NoteDto extends _NoteDto {
 abstract class _NoteDto extends NoteDto {
   const _NoteDto._() : super._();
   const factory _NoteDto(
-      {@JsonKey(ignore: true) String id,
-      @required String body,
-      @required int color,
-      @required List<TodoItemDto> todos,
-      @required FieldValue serverTimeStamp}) = _$_NoteDto;
+          {@JsonKey(ignore: true) String id,
+          @required String body,
+          @required int color,
+          @required List<TodoItemDto> todos,
+          @required @ServerTimestampConverter() FieldValue serverTimeStamp}) =
+      _$_NoteDto;
 
   factory _NoteDto.fromJson(Map<String, dynamic> json) = _$_NoteDto.fromJson;
 
@@ -232,6 +235,7 @@ abstract class _NoteDto extends NoteDto {
   @override
   List<TodoItemDto> get todos;
   @override
+  @ServerTimestampConverter()
   FieldValue get serverTimeStamp;
   @override
   @JsonKey(ignore: true)
