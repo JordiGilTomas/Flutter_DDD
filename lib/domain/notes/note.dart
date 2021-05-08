@@ -31,11 +31,12 @@ abstract class Note implements _$Note {
         .andThen(todos.failureOrUnit)
         .andThen(
           todos
-              .getOrCrash()
-              .map((todoItem) => todoItem.failureOption)
-              .filter((o) => true)
-              .getOrElse(0, (_) => none())
-              .fold(() => right(unit), (f) => left(f)),
+                  .getOrCrash()
+                  .map((todoItem) => todoItem.failureOption)
+                  .filter((o) => true)
+                  .getOrElse(0, (_) => none())
+                  .fold(() => right(unit), (f) => left(f))
+              as Either<ValueFailure, dynamic>,
         )
         .fold((f) => some(f), (_) => none());
   }
