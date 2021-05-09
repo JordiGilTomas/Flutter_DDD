@@ -18,6 +18,7 @@ class SplashPage extends StatelessWidget {
               ExtendedNavigator.of(context).replace(Routes.signInPage),
         );
       },
+      child: const SizedBox(),
     );
   }
 }
