@@ -10,18 +10,18 @@ import 'package:flutter_ddd/domain/notes/todo_item.dart';
 import 'package:flutter_ddd/domain/notes/value_objects.dart';
 
 part 'note_dtos.freezed.dart';
-part 'note_dtos.g.dart';
+// part 'note_dtos.g.dart';
 
 @freezed
-abstract class NoteDto implements _$NoteDto {
+abstract class NoteDto with _$NoteDto {
   const NoteDto._();
 
   const factory NoteDto({
-    @JsonKey(ignore: true) String id,
-    @required String body,
-    @required int color,
-    @required List<TodoItemDto> todos,
-    @required @ServerTimestampConverter() FieldValue serverTimeStamp,
+    @JsonKey(ignore: true) String? id,
+    required String body,
+    required int color,
+    required List<TodoItemDto> todos,
+    // @JsonKey(fromJson: serverTimeStamp,) @required @ServerTimestampConverter() FieldValue? serverTimeStamp,
   }) = _NoteDto;
 
   factory NoteDto.fromDomain(Note note) {
@@ -34,13 +34,13 @@ abstract class NoteDto implements _$NoteDto {
           .asList()
           .map((todoItem) => TodoItemDto.fromDomain(todoItem as TodoItem))
           .toList(),
-      serverTimeStamp: FieldValue.serverTimestamp(),
+      // serverTimeStamp: FieldValue.serverTimestamp(),
     );
   }
 
   Note toDomain() {
     return Note(
-      id: UniqueId.fromUniqueString(id),
+      id: UniqueId.fromUniqueString(id!),
       body: NoteBody(body),
       color: NoteColor(Color(color)),
       todos: List3(todos.map((dto) => dto.toDomain()).toImmutableList()),
@@ -51,7 +51,8 @@ abstract class NoteDto implements _$NoteDto {
       _$NoteDtoFromJson(json);
 
   factory NoteDto.fromFirestore(DocumentSnapshot doc) {
-    return NoteDto.fromJson(doc.data()).copyWith(id: doc.id);
+    return NoteDto.fromJson(doc.data()! as Map<String, dynamic>)
+        .copyWith(id: doc.id);
   }
 }
 
@@ -72,9 +73,9 @@ abstract class TodoItemDto implements _$TodoItemDto {
   const TodoItemDto._();
 
   const factory TodoItemDto({
-    @required String id,
-    @required String name,
-    @required bool done,
+    required String id,
+    required String name,
+    required bool done,
   }) = _TodoItemDto;
 
   factory TodoItemDto.fromDomain(TodoItem todoItem) {

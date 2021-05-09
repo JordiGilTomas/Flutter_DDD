@@ -10,9 +10,9 @@ abstract class TodoItemPrimitive implements _$TodoItemPrimitive {
   const TodoItemPrimitive._();
 
   factory TodoItemPrimitive({
-    @required UniqueId id,
-    @required String name,
-    @required bool done,
+    required UniqueId id,
+    required String name,
+    required bool done,
   }) = _TodoItemPrimitive;
 
   factory TodoItemPrimitive.empty() =>
@@ -28,9 +28,9 @@ abstract class TodoItemPrimitive implements _$TodoItemPrimitive {
 
   TodoItem toDomain() {
     return TodoItem(
-      id: id,
-      name: TodoName(name),
-      done: done,
+      id: id!,
+      name: TodoName(name!),
+      done: done!,
     );
   }
 }

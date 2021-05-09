@@ -1,7 +1,7 @@
 part of 'note_form_bloc.dart';
 
 @freezed
-abstract class NoteFormEvent with _$NoteFormEvent {
+abstract class NoteFormEvent implements _$NoteFormEvent {
   const factory NoteFormEvent.initialized(Option<Note> initialNoteOption) =
       _Initialized;
   const factory NoteFormEvent.bodyChanged(String bodyStr) = _BodyChanged;

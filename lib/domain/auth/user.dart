@@ -4,8 +4,8 @@ import 'package:flutter_ddd/domain/core/value_objects.dart';
 part 'user.freezed.dart';
 
 @freezed
-abstract class UserApp with _$UserApp {
+class UserApp with _$UserApp {
   const factory UserApp({
-    @required UniqueId id,
+    required UniqueId id,
   }) = _UserApp;
 }

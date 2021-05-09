@@ -32,8 +32,9 @@ class NoteRepository implements INoteRepository {
           ),
         )
         .onErrorReturnWith(
-      (e) {
-        if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
+      (e, s) {
+        if (e is PlatformException &&
+            e.message!.contains('PERMISSION_DENIED')) {
           return left(const NoteFailure.insufficientPermission());
         } else {
           return left(const NoteFailure.unexpected());
@@ -65,8 +66,9 @@ class NoteRepository implements INoteRepository {
           ),
         )
         .onErrorReturnWith(
-      (e) {
-        if (e is PlatformException && e.message.contains('permission_denied')) {
+      (e, s) {
+        if (e is PlatformException &&
+            e.message!.contains('permission_denied')) {
           return left(const NoteFailure.insufficientPermission());
         } else {
           return left(const NoteFailure.unexpected());
@@ -85,7 +87,7 @@ class NoteRepository implements INoteRepository {
 
       return right(unit);
     } on PlatformException catch (e) {
-      if (e.message.contains('permission_denied')) {
+      if (e.message!.contains('permission_denied')) {
         return left(const NoteFailure.insufficientPermission());
       } else {
         return left(const NoteFailure.unexpected());
@@ -103,9 +105,9 @@ class NoteRepository implements INoteRepository {
 
       return right(unit);
     } on PlatformException catch (e) {
-      if (e.message.contains('permission_denied')) {
+      if (e.message!.contains('permission_denied')) {
         return left(const NoteFailure.insufficientPermission());
-      } else if (e.message.contains('not_found')) {
+      } else if (e.message!.contains('not_found')) {
         return left(const NoteFailure.unableToUpdate());
       } else {
         return left(const NoteFailure.unexpected());
@@ -123,9 +125,9 @@ class NoteRepository implements INoteRepository {
 
       return right(unit);
     } on PlatformException catch (e) {
-      if (e.message.contains('permission_denied')) {
+      if (e.message!.contains('permission_denied')) {
         return left(const NoteFailure.insufficientPermission());
-      } else if (e.message.contains('not_found')) {
+      } else if (e.message!.contains('not_found')) {
         return left(const NoteFailure.unableToUpdate());
       } else {
         return left(const NoteFailure.unexpected());

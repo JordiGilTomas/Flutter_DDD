@@ -12,8 +12,6 @@ class NoteBody extends ValueObject<String> {
   static const maxLength = 1000;
 
   factory NoteBody(String input) {
-    assert(input != null);
-
     return NoteBody._(
       validateMaxStringLength(input, maxLength).flatMap(validateStringNotEmpty),
     );
@@ -29,8 +27,6 @@ class TodoName extends ValueObject<String> {
   static const maxLength = 30;
 
   factory TodoName(String input) {
-    assert(input != null);
-
     return TodoName._(
       validateMaxStringLength(input, maxLength)
           .flatMap(validateStringNotEmpty)
@@ -55,8 +51,6 @@ class NoteColor extends ValueObject<Color> {
   final Either<ValueFailure<Color>, Color> value;
 
   factory NoteColor(Color input) {
-    assert(input != null);
-
     return NoteColor._(
       right(makeColorOpaque(input)),
     );
@@ -72,8 +66,6 @@ class List3<T> extends ValueObject<KtList> {
   static const maxLength = 3;
 
   factory List3(KtList<T> input) {
-    assert(input != null);
-
     return List3._(validateMaxListLenght(input, maxLength));
   }
 

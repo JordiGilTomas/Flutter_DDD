@@ -49,7 +49,7 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
         saveFailureOrSuccessOption: none(),
       );
     }, saved: (e) async* {
-      Either<NoteFailure, Unit> failureOrSuccess;
+      late Either<NoteFailure, Unit> failureOrSuccess;
 
       yield state.copyWith(
         isSaving: true,
