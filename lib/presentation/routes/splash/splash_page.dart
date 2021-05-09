@@ -3,13 +3,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ddd/application/auth/bloc/auth_bloc.dart';
+import 'package:flutter_ddd/presentation/routes/router.gr.dart';
 import 'package:flutter_ddd/presentation/sign_in/sign_in_page.dart';
-
-class SplashPageRoute extends PageRouteInfo {
-  const SplashPageRoute() : super(name, path: '/splash');
-
-  static const String name = "SplashScreen";
-}
 
 class SplashPage extends StatelessWidget {
   @override
@@ -17,12 +12,14 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (BuildContext context, state) {
         state.map(
-            initial: (_) {},
+            initial: (_) {
+              context.router.push(const SplashRoute());
+            },
             authenticated: (_) {
-              context.router.replace(const SplashPageRoute());
+              context.router.push(const NotesOverviewRoute());
             },
             unauthenticated: (_) =>
-                context.router.replace(const SignInPageRoute()));
+                context.router.push(const SignInPageRoute()));
       },
       child: const SizedBox(),
     );

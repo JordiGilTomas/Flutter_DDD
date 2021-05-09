@@ -28,9 +28,9 @@ abstract class TodoItemPrimitive implements _$TodoItemPrimitive {
 
   TodoItem toDomain() {
     return TodoItem(
-      id: id!,
-      name: TodoName(name!),
-      done: done!,
+      id: id,
+      name: TodoName(name),
+      done: done,
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ddd/application/auth/bloc/auth_bloc.dart';
 import 'package:flutter_ddd/injection.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ddd/presentation/routes/autoRouter.gr.dart';
+import 'package:flutter_ddd/presentation/routes/router.gr.dart';
 
 class AppWidget extends StatelessWidget {
   final _appRouter = AppRouter();

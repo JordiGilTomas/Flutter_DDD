@@ -10,7 +10,7 @@ import 'package:flutter_ddd/domain/notes/todo_item.dart';
 import 'package:flutter_ddd/domain/notes/value_objects.dart';
 
 part 'note_dtos.freezed.dart';
-// part 'note_dtos.g.dart';
+part 'note_dtos.g.dart';
 
 @freezed
 abstract class NoteDto with _$NoteDto {
@@ -56,17 +56,17 @@ abstract class NoteDto with _$NoteDto {
   }
 }
 
-class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
-  const ServerTimestampConverter();
+// class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
+//   const ServerTimestampConverter();
 
-  @override
-  FieldValue fromJson(Object json) {
-    return FieldValue.serverTimestamp();
-  }
+//   @override
+//   FieldValue fromJson(Object json) {
+//     return FieldValue.serverTimestamp();
+//   }
 
-  @override
-  Object toJson(FieldValue fieldValue) => fieldValue;
-}
+//   @override
+//   Object toJson(FieldValue fieldValue) => fieldValue;
+// }
 
 @freezed
 abstract class TodoItemDto implements _$TodoItemDto {
